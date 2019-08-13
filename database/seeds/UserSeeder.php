@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Profession;
+use App\User;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -13,15 +15,16 @@ class UserSeeder extends Seeder
     {
 
         // $professions = DB::select('SELECT id FROM professions LIMIT 0,1' );
-        $professions= DB::table('professions')->select('id')->first();
+        //$professions= DB::table('professions')->select('id')->first();
+        $professions = Profession::where('title', 'Desarrollador back-end')->value('id');
 
-        //dd($professions->id);
+        //dd($professions);
 
-        DB::table('users')->insert([
+        User::create([
             'name' => 'prueba',
             'email' => 'prueba@gmail.com',
             'password' => 'prueba123',
-            'profession_id' => $professions->id,
+            'professions_id' => $professions,
         ]);
     }
 }
