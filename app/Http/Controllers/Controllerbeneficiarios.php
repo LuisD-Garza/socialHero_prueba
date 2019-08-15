@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\beneficiariosModel;
+use App\donacionModel;
 
 class Controllerbeneficiarios extends Controller
 {
@@ -20,6 +21,24 @@ class Controllerbeneficiarios extends Controller
         $data = $request->all();
         $data =  beneficiariosModel::where($data)->value('id');
         return $data;
+    }
+
+
+    public function getBeneficiarios(){
+        $data = beneficiariosModel::all();
+        return $data;
+    }
+
+    public function insertarDonacion(Request $request){
+        // dd($request->all());
+        $data = $request->all();
+        $newUser = donacionModel::create($data);
+    }
+
+        public function getDonaciones(Request $request){
+        // dd($request->all());
+        $data = $request->all();
+        $newUser = donacionModel::has('beneficiarios_id', '=', $data);
     }
 
 }

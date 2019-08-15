@@ -24,6 +24,7 @@ Vue.use(ElementUI);
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('loggin-component', require('./components/logginComponent.vue').default);
 Vue.component('donar-component', require('./components/donarComponent.vue').default);
+Vue.component('tabla-component', require('./components/donacionesViewComponent.vue').default);
 
 const app = new Vue({
     el: '#app',
