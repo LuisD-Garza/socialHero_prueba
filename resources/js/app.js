@@ -21,6 +21,12 @@ Vue.use(ElementUI);
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
+
+Vue.component('tabla-component', {
+    props: ['title'],
+    
+  })
+
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('loggin-component', require('./components/logginComponent.vue').default);
 Vue.component('donar-component', require('./components/donarComponent.vue').default);

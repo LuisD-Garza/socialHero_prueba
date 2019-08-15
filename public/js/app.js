@@ -3472,8 +3472,9 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/getDonaciones', 1).then(function (data) {
-      _this.options = data.data;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/getDonaciones', 1).then(function (data) {
+      console.log(data.data);
+      _this.tableData = data.data;
     })["catch"](function (e) {
       console.log(e);
     });
@@ -98730,6 +98731,8 @@ var render = function() {
           "div",
           {},
           [
+            _c("h1", [_vm._v(_vm._s(_vm.props) + "\n                ")]),
+            _vm._v(" "),
             _c(
               "el-form",
               {
@@ -98744,31 +98747,29 @@ var render = function() {
                 }
               },
               [
-                [
-                  _c(
-                    "el-table",
-                    {
-                      staticStyle: { width: "100%" },
-                      attrs: { data: _vm.tableData }
-                    },
-                    [
-                      _c("el-table-column", {
-                        attrs: { prop: "date", label: "Fecha", width: "180" }
-                      }),
-                      _vm._v(" "),
-                      _c("el-table-column", {
-                        attrs: { prop: "name", label: "Nombre", width: "180" }
-                      }),
-                      _vm._v(" "),
-                      _c("el-table-column", {
-                        attrs: { prop: "address", label: "Dirección" }
-                      })
-                    ],
-                    1
-                  )
-                ]
+                _c(
+                  "el-table",
+                  {
+                    staticStyle: { width: "100%" },
+                    attrs: { data: _vm.tableData }
+                  },
+                  [
+                    _c("el-table-column", {
+                      attrs: { prop: "donador", label: "donador", width: "180" }
+                    }),
+                    _vm._v(" "),
+                    _c("el-table-column", {
+                      attrs: { prop: "monto", label: "monto", width: "180" }
+                    }),
+                    _vm._v(" "),
+                    _c("el-table-column", {
+                      attrs: { prop: "created_at", label: "created_at" }
+                    })
+                  ],
+                  1
+                )
               ],
-              2
+              1
             )
           ],
           1
@@ -111199,6 +111200,9 @@ Vue.use(element_ui__WEBPACK_IMPORTED_MODULE_0___default.a);
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
+Vue.component('tabla-component', {
+  props: ['title']
+});
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
 Vue.component('loggin-component', __webpack_require__(/*! ./components/logginComponent.vue */ "./resources/js/components/logginComponent.vue")["default"]);
 Vue.component('donar-component', __webpack_require__(/*! ./components/donarComponent.vue */ "./resources/js/components/donarComponent.vue")["default"]);

@@ -3,28 +3,28 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="">
+                    <h1>{{props}}
+                    </h1>
                     <el-form  v-on:submit.prevent="console.log(form)"  class="text-center" ref="form" :model="form" label-width="120px">
-
-  <template>
     <el-table
       :data="tableData"
       style="width: 100%">
       <el-table-column
-        prop="date"
-        label="Fecha"
+        prop="donador"
+        label="donador"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="name"
-        label="Nombre"
+        prop="monto"
+        label="monto"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="address"
-        label="Dirección">
+        prop="created_at"
+        label="created_at">
       </el-table-column>
     </el-table>
-  </template>
+
                     </el-form>
                 </div>
             </div>
@@ -51,8 +51,12 @@
         }
     },
     mounted(){
-            axios.get('/getDonaciones', 1).then(data =>{
-                this.options = data.data;
+        
+            axios.post('/getDonaciones', 1).then(data =>{
+
+                console.log(data.data)
+                this.tableData = data.data;
+                
             }).catch(e =>{
                 console.log(e);
             })

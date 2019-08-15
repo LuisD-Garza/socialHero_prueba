@@ -37,8 +37,9 @@ class Controllerbeneficiarios extends Controller
 
         public function getDonaciones(Request $request){
         // dd($request->all());
-        $data = $request->all();
-        $newUser = donacionModel::has('beneficiarios_id', '=', $data);
+        $data = $request;
+        $newUser = donacionModel::select()->where('id', 1)->get();
+        return $newUser;
     }
 
 }
