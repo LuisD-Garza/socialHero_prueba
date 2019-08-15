@@ -15,5 +15,12 @@ class Controllerbeneficiarios extends Controller
         $newUser = beneficiariosModel::create($data);
        
     }
+
+    public function loggin(Request $request){
+        $data = $request->all();
+        $data =  beneficiariosModel::where($data)->value('id');
+        return $data;
+    }
+
 }
     

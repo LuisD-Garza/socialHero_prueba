@@ -13,7 +13,9 @@
     </head>
     <body>
             <div id="app" class="content">
-                <example-component></example-component>
+                    {{-- <example-component></example-component> --}}
+                    {{-- <loggin-component></loggin-component> --}}
+                    <donar-component></donar-component>
             </div>
         <script src="{{asset('js/app.js')}}"></script> 
        
